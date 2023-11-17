@@ -91,13 +91,30 @@ prev.addEventListener('click', function() {
 
 7- Aggiungo funzionalità di autoplay: dopo 3 secondi l'immagine cambia e passa a quella successiva
 
+function autoPlay() {
+    // if the current slide is not the last one, remove the class "active" from the current slide and add it to the next one.
+    if (currentSlide < allItems.length - 1) {
+      allItems[currentSlide].classList.remove("active");
+      currentSlide++;
+      allItems[currentSlide].classList.add("active");
+    } // if the current slide is the last one, remove the class "active" from the current slide and add it to the first one.
+    else {
+      allItems[currentSlide].classList.remove("active");
+      currentSlide = 0;
+      allItems[currentSlide].classList.add("active");
+    }
+    //the thumbnail with the same source image as the current slide has class opacity removed
+    const allThumbnails = document.querySelectorAll(".thumbnails img");
+    for (let i = 0; i < allThumbnails.length; i++) {
+      allThumbnails[i].classList.add("opacity");
+    }
+    allThumbnails[currentSlide].classList.remove("opacity");
+  };
+
+//   setInterval(autoPlay, 3000);
 
 
-
-
-Milestone 1
-Aggiungere la funzionalità di autoplay!
-dopo un certo periodo di tempo (3 secondi) l’immagine attiva dovrà cambiare alla successiva.
+8- Aggiungo dei bottoni di start e stop per la funzione autoplay
 BONUS:
 Aggiungere bottoni di start / stop.
 

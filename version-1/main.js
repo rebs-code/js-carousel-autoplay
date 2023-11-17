@@ -141,4 +141,19 @@ function autoPlay() {
     allThumbnails[currentSlide].classList.remove("opacity");
   };
 
-  setInterval(autoPlay, 3000);
+//   setInterval(autoPlay, 3000);
+
+//bottone per autoplay
+const start = document.getElementById("start");
+let interval;
+
+start.addEventListener("click", function () {
+    interval = setInterval(autoPlay, 3000);
+});
+
+//bottone per stoppare autoplay
+const stop = document.getElementById("stop");
+stop.addEventListener("click", function () {
+    clearInterval(interval); 
+});
+
